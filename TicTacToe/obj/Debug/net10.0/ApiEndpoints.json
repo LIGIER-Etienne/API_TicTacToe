@@ -1,0 +1,68 @@
+[
+  {
+    "ContainingType": "TicTacToe.Controllers.TicTacToeController",
+    "Method": "Move",
+    "RelativePath": "api/TicTacToe/move",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "TicTacToe.Dtos.MoveRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "TicTacToe.Dtos.MoveResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TicTacToe.Controllers.TicTacToeController",
+    "Method": "Reset",
+    "RelativePath": "api/TicTacToe/reset",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "TicTacToe.Dtos.GameStateDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TicTacToe.Controllers.TicTacToeController",
+    "Method": "GetState",
+    "RelativePath": "api/TicTacToe/state",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "TicTacToe.Dtos.GameStateDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

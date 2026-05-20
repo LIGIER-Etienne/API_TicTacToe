@@ -1,0 +1,204 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "TicTacToe | v1",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://localhost:7142"
+    },
+    {
+      "url": "http://localhost:5288"
+    }
+  ],
+  "paths": {
+    "/api/TicTacToe/state": {
+      "get": {
+        "tags": [
+          "TicTacToe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameStateDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameStateDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameStateDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TicTacToe/move": {
+      "post": {
+        "tags": [
+          "TicTacToe"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MoveRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MoveRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MoveRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MoveResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MoveResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MoveResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TicTacToe/reset": {
+      "post": {
+        "tags": [
+          "TicTacToe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameStateDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameStateDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameStateDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GameStateDto": {
+        "required": [
+          "board",
+          "currentGameState",
+          "currentPlayer"
+        ],
+        "type": "object",
+        "properties": {
+          "board": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "currentGameState": {
+            "type": "string"
+          },
+          "currentPlayer": {
+            "type": "string"
+          }
+        }
+      },
+      "MoveRequestDto": {
+        "required": [
+          "row",
+          "column"
+        ],
+        "type": "object",
+        "properties": {
+          "row": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "column": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      },
+      "MoveResponseDto": {
+        "required": [
+          "success",
+          "gameState"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "error": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "gameState": {
+            "$ref": "#/components/schemas/GameStateDto"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "TicTacToe"
+    }
+  ]
+}
