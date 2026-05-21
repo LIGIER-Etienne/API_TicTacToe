@@ -3,6 +3,7 @@ using MAUI_TicTacToe.Enums;
 using MAUI_TicTacToe.Players;
 using MAUI_TicTacToe.InputProviders;
 using TicTacToe.Dtos;
+using TicTacToe.Enums;
 
 namespace TicTacToe.Services;
 
@@ -39,9 +40,9 @@ public class GameService
     {
         return new GameStateDto
         {
-            Board = ConvertBoardToArray(),
-            CurrentGameState = _gameState.ToString(),
-            CurrentPlayer = _currentPlayer.Symbol.ToString()
+            Board = ToJagged(_board.Cells),
+            CurrentGameState = _gameState,
+            CurrentPlayer = _currentPlayer.Symbol
         };
     }
 
@@ -120,17 +121,23 @@ public class GameService
         }
     }
 
-    private string[][] ConvertBoardToArray()
+    private static Symbol[][] ToJagged(Symbol[,] board)
     {
-        var result = new string[3][];
-        for (int i = 0; i < 3; i++)
+        int rows = board.GetLength(0);
+        int cols = board.GetLength(1);
+
+        Symbol[][] result = new Symbol[rows][];
+
+        for (int i = 0; i < rows; i++)
         {
-            result[i] = new string[3];
-            for (int j = 0; j < 3; j++)
+            result[i] = new Symbol[cols];
+
+            for (int j = 0; j < cols; j++)
             {
-                result[i][j] = _board.Cells[i, j].ToString();
+                result[i][j] = board[i, j];
             }
         }
+
         return result;
     }
 }

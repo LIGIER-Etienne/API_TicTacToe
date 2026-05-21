@@ -1,8 +1,11 @@
+using MAUI_TicTacToe.Enums;
+using TicTacToe.Enums;
+
 namespace TicTacToe.Dtos;
 
 public class GameStateDto
 {
-    public required string[][] Board { get; set; }
-    public required string CurrentGameState { get; set; }
-    public required string CurrentPlayer { get; set; }
+    public required Symbol[][] Board { get; set; }
+    public required GameState CurrentGameState { get; set; }
+    public required Symbol CurrentPlayer { get; set; }
 }

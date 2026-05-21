@@ -1,4 +1,5 @@
 ﻿using MAUI_TicTacToe.Enums;
+using TicTacToe.Enums;
 
 namespace MAUI_TicTacToe;
 

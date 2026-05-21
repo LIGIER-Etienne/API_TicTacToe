@@ -123,6 +123,9 @@
   },
   "components": {
     "schemas": {
+      "GameState": {
+        "type": "integer"
+      },
       "GameStateDto": {
         "required": [
           "board",
@@ -136,15 +139,15 @@
             "items": {
               "type": "array",
               "items": {
-                "type": "string"
+                "$ref": "#/components/schemas/Symbol"
               }
             }
           },
           "currentGameState": {
-            "type": "string"
+            "$ref": "#/components/schemas/GameState"
           },
           "currentPlayer": {
-            "type": "string"
+            "$ref": "#/components/schemas/Symbol"
           }
         }
       },
@@ -193,6 +196,9 @@
             "$ref": "#/components/schemas/GameStateDto"
           }
         }
+      },
+      "Symbol": {
+        "type": "integer"
       }
     }
   },

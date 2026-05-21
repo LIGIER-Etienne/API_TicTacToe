@@ -1,5 +1,5 @@
-﻿using MAUI_TicTacToe.Enums;
-using MAUI_TicTacToe.InputProviders;
+﻿using MAUI_TicTacToe.InputProviders;
+using TicTacToe.Enums;
 
 namespace MAUI_TicTacToe.Players {
     public class HumanPlayer :Player {

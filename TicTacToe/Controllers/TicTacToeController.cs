@@ -16,7 +16,8 @@ public class TicTacToeController(GameService gameService) : ControllerBase
     [HttpGet("state")]
     public ActionResult<GameStateDto> GetState()
     {
-        return Ok(_gameService.GetCurrentState());
+        GameStateDto gameStateDto = _gameService.GetCurrentState();
+        return Ok(gameStateDto);
     }
 
     /// <summary>
